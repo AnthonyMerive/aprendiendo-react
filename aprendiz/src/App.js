@@ -2,7 +2,7 @@ import React from "react";
 // import Navbar from "./components/Navbar"
 // import Condicional from './components/Condicional'
 // import RecorrerArray from './components/RecorrerArray'
-import Formulario from './components/Formulario'
+// import Formulario from './components/Formulario'
 
 //para agregar clases debe ser con className
 function App() {
@@ -12,8 +12,8 @@ function App() {
     <Condicional/>
     <br/>
     <RecorrerArray/>
-    <br/> */}
-    <Formulario/>
+    <br/>
+    <Formulario/> */}
   </div>);
 }
 

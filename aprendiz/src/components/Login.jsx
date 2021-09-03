@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import md5 from 'md5'
+import {Link} from 'react-router-dom'
+
+const URL = 'https://apialbum.herokuapp.com/usuario'
 
 export default class Login extends Component {
     
@@ -21,12 +26,51 @@ export default class Login extends Component {
         });
         console.log(this.state.usuarios) //imprimir todo el estado 
     }
+
+    iniciarSesion = async () =>{
+
+        await axios.get(URL,{
+            params: {
+                    username: this.state.usuarios.username,
+                    password: md5(this.state.usuarios.password)
+            }}
+            )
+
+            .then(response =>{
+
+                return response.data;
+
+            })
+
+            .then(response =>{
+
+                if(response.length){
+
+                    const respuesta = response[0];
+                    alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido_paterno}`)
+                
+                }else{
+                    alert('el usuario o la contraseña no son correctos');
+                } 
+
+            })
+
+            .catch(error =>{
+
+                console.log(error);
+
+            })
+    }
     
+    handleSubmit = e =>{
+        e.preventDefault();
+        this.iniciarSesion()
+    }
     
     render() {
         return (
             <div>
-            <form className="form-signin">
+            <form className="form-signin" onSubmit={this.handleSubmit}>
                 <h1 className="h4 mb-3 font-weight-normal">
                     Inicio de sesión
                 </h1>
@@ -71,13 +115,12 @@ export default class Login extends Component {
                         </p>
                     </div>
                 </div>
-                  <a
-                    to=""
+                  <Link
+                    to="/registro"
                     className="Link"
-                    href="to"
                    >
                     Create new account
-                </a>
+                </Link>
             </form>
         </div>
         )

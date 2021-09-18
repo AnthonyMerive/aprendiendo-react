@@ -6,14 +6,17 @@ import ReactDOM from 'react-dom';
 // import CategoriasApp from './components/CategoriasApp'  
 import './style/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import FormHooks from './components/FormHooks';
-
+// import FormHooks from './components/FormHooks';
+// import Memorize from './components/Memorize'
+import { MemoHook } from './components/MemoHook'
 ReactDOM.render(
   <React.StrictMode>
 
     {/* <AppRouter/> */}
 
-    <FormHooks />
+    {/* <FormHooks /> */}
+
+   <MemoHook />
     
   </React.StrictMode>,
   document.getElementById('root')
